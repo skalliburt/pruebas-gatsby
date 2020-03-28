@@ -5,5 +5,14 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  plugins: [
+    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `post`,
+        path: `${__dirname}/data/post`
+      }
+    },
+  ],
 }
