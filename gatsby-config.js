@@ -1,9 +1,3 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
-
 module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
@@ -14,6 +8,21 @@ module.exports = {
         path: `${__dirname}/data/post`
       }
     },
-    `gatsby-transformer-remark`
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options:{
+        plugins: [
+          `gatsby-remark-relative-images`,
+          {
+            resolve: `gatsby-remark-images`,
+            options:{
+              maxWidth: 200,
+              LinkImagesToOriginal: false
+            }
+          }
+        ]
+      }
+    }
   ],
 }
