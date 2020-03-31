@@ -1,21 +1,43 @@
-exports.createPages =({actions})=>{
+const path = require('path');
+
+exports.onCreateNode = ({ node, actions }) => {
+    const { createNodeField } = actions
+
+    if(node.internal.type === 'MarkdownRemark'){
+        const slug = path.basename(node.fileAbsolutePath, '.md')
+
+       createNodeField({
+           node,
+           name: 'slug',
+           value: slug
+       })
+    }
+}
+
+exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
-    // pull in or use whatever data
-    const dogData = [
-      {
-        name: "Fido",
-        breed: "Sheltie",
-      },
-      {
-        name: "Sparky",
-        breed: "Corgi",
-      },
-    ]
-    dogData.forEach(dog=>{
+    const blogPostTemplate = path.resolve(`./src/templates/blog.js`)
+    const res = await graphql(`
+        query{
+            allMarkdownRemark {
+                edges {
+                  node {
+                    fields{
+                      slug
+                    }
+                  }
+                }
+              }
+        }
+    `)
+
+    res.data.allMarkdownRemark.edges.forEach((edge)=>{
         createPage({
-            path: `/${dog.name}`,
-            component: require.resolve(`./src/templates/dog-template.js`),
-            context: { dog },
+            component: blogPostTemplate,
+            path: `/blog/${edge.node.fields.slug}`,
+            context:{
+                slug: edge.node.fields.slug
+            }
         })
     })
 }

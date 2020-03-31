@@ -14,5 +14,6 @@ module.exports = {
         path: `${__dirname}/data/post`
       }
     },
+    `gatsby-transformer-remark`
   ],
 }

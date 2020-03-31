@@ -1,12 +1,13 @@
 import React from "react"
-import style from "./styles.scss"
-import Image from "../components/image"
+import {Link} from "gatsby"
 
-export default () => (
-    <section className={style.feature}>
-    <h1>Using CSS Modules</h1>
-    <p>carga de imagenes con plugin</p>
-    <Image/>
-  </section>
-)
+const Index =()=>{  
+return(
+    <h1><Link to="/about/">about</Link></h1>
 
+      
+    
+    
+  )
+}
+export default Index

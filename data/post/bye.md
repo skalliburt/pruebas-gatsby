@@ -1,9 +1,9 @@
 ---
-title: hola
-slug: jajajajaj
+title: hello
+slug: hello-world
 author: alex
 ---
-holaaaaa una vez
+holaaaaa dos veces
 # Primer nivel de encabezado
 ## Segundo nivel de encabezado
 ### Tercer nivel de encabezado
