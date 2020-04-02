@@ -5,16 +5,17 @@ const About = () =>{
     
     const data = useStaticQuery(graphql`
         query{
-          allMarkdownRemark {
+          allContentfulArticle (
+            sort:{
+              fields:date,
+              order: DESC
+            }
+          ){
             edges {
               node {
-                frontmatter {
-                  title
-                  author
-                }
-                fields{
-                  slug
-                }
+                title
+                slug
+                date(formatString:"MMMM,DD,YYYY")
               }
             }
           }
@@ -22,13 +23,14 @@ const About = () =>{
     `)
     return(
         
-    <ol>{data.allMarkdownRemark.edges.map((edge)=>{
+    <ol>
+      {data.allContentfulArticle.edges.map((edge)=>{
         return(
             
             <li>
-                <Link to={`/blog/${edge.node.fields.slug}`}>
-                  <h2>{edge.node.frontmatter.title}</h2>
-                  <p>{edge.node.frontmatter.author}</p>
+                <Link to={`/blog/${edge.node.slug}`}>
+                  <h2>{edge.node.title}</h2>
+                  <p>{edge.node.date}</p>
                 </Link>
             </li>
             

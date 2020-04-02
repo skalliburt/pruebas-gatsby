@@ -1,5 +1,12 @@
 module.exports = {
   plugins: [
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `7pceas7aq60n`,
+        accessToken: `U2n3V45BClKEPGuAIo6LQ9aGNrtA-zy3LsahlTPN1K4`,
+      }
+    },
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
