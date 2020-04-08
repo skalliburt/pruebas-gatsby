@@ -1,4 +1,16 @@
 module.exports = {
+  siteMetadata: {
+    title: `Blog Alexander Ortiz`,
+    description: `Desarrollador web freelance, especialidad en Front-End .`,
+    author: `Alexander Ortiz`,
+    siteUrl: `https://unawebdiferente.com/`,
+    social: {
+      facebook: `UnaWebDiferente`,
+      github: `skalliburt`,
+      instagram: `unawebdiferente92`,
+      email: `alex.ortiz@unawebdiferente.com`,
+    },
+  },
   plugins: [
     {
       resolve: `gatsby-source-contentful`,
@@ -30,6 +42,7 @@ module.exports = {
           }
         ]
       }
-    }
+    },
+
   ],
 }
